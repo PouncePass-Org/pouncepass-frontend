@@ -77,7 +77,7 @@ function Register() {
     return (
         <div className="flex items-center justify-center h-screen lr-stripe-bg">
             <img
-                src="/PPI.png"
+                src="/src/assets/PPI.png"
                 alt="Logo"
                 className="absolute top-2 w-1/5"
                 style={{ right: '3rem' }}

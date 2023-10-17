@@ -37,7 +37,7 @@ function Login() {
     return (
         <div className="flex items-center justify-center h-screen rl-stripe-bg">
             <img
-                src="/PouncePassIconB:g.png"
+                src="/src/assets/PouncePassIconB:g.png"
                 alt="Logo"
                 className="absolute top-12 w-1/5"
                 style={{left: '3rem' }}
