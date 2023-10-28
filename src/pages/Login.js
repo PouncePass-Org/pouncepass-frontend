@@ -1,5 +1,7 @@
+//react pages/Login.js
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import logo from "../assets/PouncePassIconGb.png";
 
 function Login() {
     const navigate = useNavigate();
@@ -9,45 +11,48 @@ function Login() {
     const [showError, setShowError] = useState(false);
     const [showModal, setShowModal] = useState(false);
 
-    // const handleSignIn = async () => {
-    //     // Your logic to fetch the user from your database.
-    //     const userFromDb = await fetchUserFromDb(email);
-    //
-    //     if (userFromDb) {
-    //         const isPasswordCorrect = await bcrypt.compare(password, userFromDb.password);
-    //
-    //         if (isPasswordCorrect) {
-    //             // Your logic to log the user in and possibly set a session.
-    //             loginUser(userFromDb);
-    //         } else {
-    //             setShowError(true);
-    //             setTimeout(() => setShowError(false), 3000);  // Hide the error message after 3 seconds
-    //         }
-    //     } else {
-    //         setShowError(true);
-    //         setTimeout(() => setShowError(false), 3000);  // Hide the error message after 3 seconds
-    //     }
-    // };
+    const handleSignIn = async () => {
+        const response = await fetch('http://127.0.0.1:8000/users/login/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, password }),
+        });
+
+        const data = await response.json();
+        if (response.ok) {
+            localStorage.setItem('access_token', data.access_token);
+
+            // Redirect based on group
+            if (data.group === 'Admin') {
+                navigate('/adminDashboard');
+            } else {
+                navigate('/');
+            }
+
+        } else {
+            const errorMessage = data.message || "An error occurred";
+            setShowError(errorMessage);
+            setTimeout(() => setShowError(false), 3000);
+        }
+    };
 
 
-    // if (status === "authenticated") {
-    //     router.push("/");
-    // }
+
 
     return (
         <div className="flex items-center justify-center h-screen rl-stripe-bg">
             <img
-                src="/src/assets/PouncePassIconB:g.png"
+                src={logo}  // Use the imported image here
                 alt="Logo"
                 className="absolute top-12 w-1/5"
-                style={{left: '3rem' }}
+                style={{ left: '3rem' }}
             />
             <div className="p-8 rounded-lg shadow-md w-96">
                 <div className="mb-2">
                     <input
                         type="text"
                         placeholder="Email"
-                        className="w-full p-3 rounded-full border border-blue-300"
+                        className="w-full p-3 rounded-full border border-blue-300 text-black"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                     />
@@ -56,7 +61,8 @@ function Login() {
                     <input
                         type="password"
                         placeholder="Password"
-                        className="w-full p-3 rounded-full border border-blue-300"
+                        className="w-full p-3 rounded-full border border-blue-300 text-black"
+
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                     />
@@ -65,7 +71,7 @@ function Login() {
                     <button
                         className="text-white p-2 rounded-full w-full"
                         style={{ backgroundColor: '#373a3a' }}
-                        //onClick={handleSignIn}
+                        onClick={handleSignIn}  // Updated this line
                     >
                         Sign In
                     </button>
@@ -74,7 +80,7 @@ function Login() {
                             className="text-red-500 text-center my-2"
                             style={{ animation: 'fadeIn 0.5s ease-out', animationFillMode: 'forwards' }}
                         >
-                            Incorrect Email or Password
+                            {showError}
                         </div>
                     )}
                 </div>
@@ -89,6 +95,14 @@ function Login() {
                         onClick={() => navigate('/register')}
                     >
                         Register Here
+                    </button>
+                </div>
+                <div className="mb-2 text-center">
+                    <button
+                        className="position-center text-black p-1 rounded-full w-56 bg-white"
+                        onClick={() => navigate('/login/admin')}
+                    >
+                        Admin Login
                     </button>
                 </div>
                 <div className="border-b border-gray-300 my-2"></div>

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
+    const navigate = useNavigate();
     const [scrolling, setScrolling] = useState(false);
 
     const handleScroll = () => {
@@ -27,7 +29,7 @@ const Header = () => {
             <div className="container mx-auto p-4 flex justify-between items-center">
                 {/* Left side */}
                 <div className="flex space-x-4">
-                    <button className="font-bold">PouncePass</button>
+                    <button className="font-bold" onClick={() => navigate('/')}>PouncePass</button>
                     <button>Concerts</button>
                     <button>Sports</button>
                     <button>Art & Theatre</button>
@@ -36,9 +38,9 @@ const Header = () => {
 
                 {/* Right side */}
                 <div className="flex space-x-4">
-                    <button>Sign In</button>
+                    <button onClick={() => navigate('/login')}>Sign In </button>
                     <div>/</div>
-                    <button> Register</button>
+                    <button onClick={() => navigate('/register')}> Register</button>
                     <button>Help</button>
                 </div>
             </div>

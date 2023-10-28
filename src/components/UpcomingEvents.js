@@ -1,4 +1,5 @@
 import React from 'react';
+import {useNavigate} from "react-router-dom";
 
 const events = [
     {
@@ -29,12 +30,13 @@ const events = [
 ];
 
 const UpcomingEvents = () => {
+    const navigate = useNavigate();
     return (
         <div className="w-1/3 p-4">
             <h2 className="text-xl font-bold  mb-4">Upcoming Events</h2>
             <ul>
                 {events.map((event) => (
-                    <li key={event.id} className="mb-4 p-2 bg-gray-200 rounded text-black">
+                    <li key={event.id} className="mb-4 p-2 bg-gray-200 rounded text-black" onClick={() => navigate('/event')}>
                         <h3 className="text-lg">{event.name}</h3>
                         <p>{event.date}</p>
                     </li>

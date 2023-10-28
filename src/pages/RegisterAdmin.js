@@ -48,7 +48,7 @@ function Register() {
             return;
         }
 
-        const res = await fetch('http://127.0.0.1:8000/users/register/', {
+        const res = await fetch('http://127.0.0.1:8000/users/register/admin/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -145,9 +145,9 @@ function Register() {
             <div className="mb-2 text-center">
                 <button
                     className="position-center text-black p-1 rounded-full w-56 bg-white"
-                    onClick={() => navigate('/register/admin')}
+                    onClick={() => navigate('/register')}
                 >
-                    Admin Registration
+                    User Registration
                 </button>
             </div>
         </div>
