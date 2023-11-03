@@ -18,10 +18,10 @@ function App() {
                     <Route path="/register" element={<Register />} />
                     <Route path="/register/admin" element={<RegisterAdmin />} />
                     <Route path="/login" element={<Login />} />
-                    <Route path="/" element={<Dashboard />} />
+                    <Route path="/" element={<Events />} />
                     <Route path="/adminDashboard" element={<AdminDashboard />} />
                     <Route path="/event/:id" element={<EventDetail />} />
-                    <Route path="/events" element={<Events />} />
+                    <Route path="/dashboard" element={<Dashboard />} />
                     <Route path="/confirmation" element={<Confirmation />} />
 
 
