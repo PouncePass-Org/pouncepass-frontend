@@ -1,10 +1,11 @@
-//react pages/Login.js
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../components/AuthContext'; // Update with your actual path
 import logo from "../assets/PouncePassIconGb.png";
 
 function Login() {
     const navigate = useNavigate();
+    const { login } = useContext(AuthContext);
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -12,15 +13,20 @@ function Login() {
     const [showModal, setShowModal] = useState(false);
 
     const handleSignIn = async () => {
-        const response = await fetch('http://127.0.0.1:8000/users/login/', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email, password }),
-        });
+        try {
+            const response = await fetch('http://127.0.0.1:8000/users/login/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password }),
+            });
 
-        const data = await response.json();
-        if (response.ok) {
-            localStorage.setItem('access_token', data.access_token);
+            if (!response.ok) {
+                const data = await response.json();
+                throw new Error(data.message || 'Login failed, please try again.');
+            }
+
+            const data = await response.json();
+            login(data.access_token); // Use the login method from AuthContext
 
             // Redirect based on group
             if (data.group === 'Admin') {
@@ -28,13 +34,12 @@ function Login() {
             } else {
                 navigate('/');
             }
-
-        } else {
-            const errorMessage = data.message || "An error occurred";
-            setShowError(errorMessage);
+        } catch (error) {
+            setShowError(error.message);
             setTimeout(() => setShowError(false), 3000);
         }
     };
+
 
 
 
