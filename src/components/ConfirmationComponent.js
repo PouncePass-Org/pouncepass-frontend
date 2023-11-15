@@ -23,7 +23,7 @@ const ConfirmationComponent = () => {
     const formattedPhone = userDetails?.phone ? formatPhoneNumber(userDetails.phone) : '';
 
     // Combine information for QR code
-    const qrCodeData = `${eventDetails?.name}, ${eventDetails?.date}, ${eventDetails?.time}`;
+    const qrCodeData = `${userDetails?.username ?? 'N/A'}, ${eventDetails?.name ?? 'N/A'}, ${eventDetails?.date ?? 'N/A'}, ${eventDetails?.time ?? 'N/A'}`;
 
     // Ref for the QR code image
     const qrCodeRef = useRef();
