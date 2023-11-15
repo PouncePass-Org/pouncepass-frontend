@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
+import QRCode from 'qrcode.react';
 
 // Utility function to format phone number
 const formatPhoneNumber = (phoneNumber) => {
@@ -20,6 +21,19 @@ const ConfirmationComponent = () => {
 
     // Format the phone number
     const formattedPhone = userDetails?.phone ? formatPhoneNumber(userDetails.phone) : '';
+
+    // Combine information for QR code
+    const qrCodeData = `${eventDetails?.name}, ${eventDetails?.date}, ${eventDetails?.time}`;
+
+    // Ref for the QR code image
+    const qrCodeRef = useRef();
+
+    // useEffect to update the QR code when component mounts
+    useEffect(() => {
+        if (qrCodeRef.current) {
+            qrCodeRef.current.update(qrCodeData);
+        }
+    }, [qrCodeData]);
 
     //console log
     console.log('eventDetails', eventDetails);
@@ -56,7 +70,7 @@ const ConfirmationComponent = () => {
             {/*</div>*/}
             <div className="mt-4">
                 <h2 className="text-xl font-bold mb-2">Your QR Code(s):</h2>
-                <img src='/src/assets/sample-QR.png' alt="QR Code" className="w-32 h-32"/>
+                <QRCode value={qrCodeData} size={128} ref={qrCodeRef} />
             </div>
         </div>
     );
