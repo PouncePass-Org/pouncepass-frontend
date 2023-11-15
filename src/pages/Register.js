@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import logo from "../assets/PPI.png";
 
+//Test comment
+
 function Register() {
     const navigate = useNavigate();
     const [showModal, setShowModal] = useState(false);
