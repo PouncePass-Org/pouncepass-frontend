@@ -1,70 +1,39 @@
-# Getting Started with Create React App
+# PouncePass Local Development Environment Setup
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This guide will walk you through setting up your local development environment for the LitVerse project.
 
-## Available Scripts
+## Prerequisites
 
-In the project directory, you can run:
+- **Node.js and npm** installed. If you don't have them, you can download and install from the [Node.js official website](https://nodejs.org/).
+- You have cloned both the frontend and Django backend "development" branches from the repository - https://github.com/orgs/PouncePass-Org/repositories
 
-### `npm start`
+### Quick Setup Steps
+#### Frontend:
+1. Open terminal, navigate to the pouncepass-frontend project directory [(that you have already cloned from here)](https://github.com/PouncePass-Org/pouncepass-frontend)
+2. Run `npm install`
+3. Run `npm start`
+    1. This will run the frontend server.
+    2. Go to http://localhost:3000/login to see the frontend while you develop.
+#### Backend:
+1. Open another terminal, navigate to the pouncepass-backendD project directory [(that you have already cloned from here)](https://github.com/PouncePass-Org/pouncepass-backend)
+2. Run `pip install -r requirements.txt`
+3. Run `python manage.py runserver`
+    1. This will run the backend server.
+    2. Go to http://127.0.0.1:8000/admin/ to see the backend while you develop.
+    3. You can also go to http://127.0.0.1:8000/order/orders to see the API while you develop.
+5. Make sure this was successful and that your backend is running.
+6. At this point, you're ready to develop.
+7. Now, decide on what feature you want to develop and then create a branch for it, which you will make all your changes in. Make your changes, test your changes, then submit a PR once your changes are complete and working.
+    1. Be detailed and concise in your PR, so that i can clearly see what it's for.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Prompt Help Template
+- First, in your IDE, select all of your files, right click and select Copy Path/Reference. This will copy the file structure of your project.
+    - You can copy and paste this file structure into ChatGPT so that it can help you much better.
+- Prompt Help Template:
+    - ##### "Here is the file structure of our React frontend/DJango SQLite3 backend: {Paste the file structure you just got, first.}
+    - ##### I am a member of a student group developing a ticketing webapp (very similar to ticketmaster) called "PouncePass". We are working off of feature branches in a normal github workflow, using pull requests to submit changes.
+    - ##### Our tech stack is: React frontend/DJango SQLite3 backend
+    - ##### {Insert any other relevant context here, the more details it has the better it can help you}
+    - ##### My current goal is to: {insert your current goal}
+    - ##### Given the details I have just provided you, please guide me with detailed steps to reach this goal.
+    - ##### Please remember all of this specific context throughout this conversation to provide the most accurate and tailored responses possible."
