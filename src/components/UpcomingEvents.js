@@ -33,7 +33,9 @@ const UpcomingEvents = () => {
     const navigate = useNavigate();
     return (
         <div className="w-1/3 p-4">
-            <h2 className="text-xl font-bold  mb-4">Upcoming Events</h2>
+            <div className="bg-white px-36 rounded"> {/* Container for the heading with white background */}
+                <h2 className="text-xl font-bold mb-4">Upcoming Events</h2>
+            </div>
             <ul>
                 {events.map((event) => (
                     <li key={event.id} className="mb-4 p-2 bg-gray-200 rounded text-black" onClick={() => navigate('/event')}>
