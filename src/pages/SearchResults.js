@@ -28,8 +28,8 @@ const SearchResultsPage = () => {
         <div className="bg-amber-950">
             <Header />
             <SearchBar />
+
             <div>
-                con
                 {events.length > 0 ? (
                     events?.map((event, index) => (
                         <EventCard key={index} event={event} />
