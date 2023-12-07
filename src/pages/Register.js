@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import logo from "../assets/PPI.png";
+import { FaCheck, FaTimes } from 'react-icons/fa'; // Importing icons
 
 function Register() {
     const navigate = useNavigate();
@@ -62,7 +63,7 @@ function Register() {
             navigate('/login');  // Navigate to /login upon successful registration
         } else {
             setServerError(data.status);
-            setShowErrorPopup(true);  // Display the error popup
+            // setShowErrorPopup(true);  // Display the error popup
             setErrorMessage(data.status);  // Set the error message
         }
     };
@@ -94,13 +95,25 @@ function Register() {
                         onChange={handleChange}
                     />
                     {/* Display password rules */}
+                    {/* Updated Display for password rules */}
                     <div className="mt-2">
-                        <div className={validLength ? 'text-green-500' : 'text-red-500'}>At least 15 characters</div>
-                        <div className={hasUpper ? 'text-green-500' : 'text-red-500'}>At least one uppercase letter</div>
-                        <div className={hasLower ? 'text-green-500' : 'text-red-500'}>At least one lowercase letter</div>
-                        <div className={hasNumber ? 'text-green-500' : 'text-red-500'}>At least one number</div>
-                        <div className={hasSpecial ? 'text-green-500' : 'text-red-500'}>At least one special character</div>
+                        <div className={`flex items-center ${validLength ? 'text-green-500' : 'text-red-500'}`}>
+                            {validLength ? <FaCheck /> : <FaTimes />} <span className="ml-2">At least 15 characters</span>
+                        </div>
+                        <div className={`flex items-center ${hasUpper ? 'text-green-500' : 'text-red-500'}`}>
+                            {hasUpper ? <FaCheck /> : <FaTimes />} <span className="ml-2">At least one uppercase letter</span>
+                        </div>
+                        <div className={`flex items-center ${hasLower ? 'text-green-500' : 'text-red-500'}`}>
+                            {hasLower ? <FaCheck /> : <FaTimes />} <span className="ml-2">At least one lowercase letter</span>
+                        </div>
+                        <div className={`flex items-center ${hasNumber ? 'text-green-500' : 'text-red-500'}`}>
+                            {hasNumber ? <FaCheck /> : <FaTimes />} <span className="ml-2">At least one number</span>
+                        </div>
+                        <div className={`flex items-center ${hasSpecial ? 'text-green-500' : 'text-red-500'}`}>
+                            {hasSpecial ? <FaCheck /> : <FaTimes />} <span className="ml-2">At least one special character</span>
+                        </div>
                     </div>
+
                 </div>
                 <div className="mb-2">
                     <input
