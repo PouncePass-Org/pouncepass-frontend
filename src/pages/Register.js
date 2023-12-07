@@ -4,7 +4,6 @@ import logo from "../assets/PPI.png";
 
 function Register() {
     const navigate = useNavigate();
-    const [showModal, setShowModal] = useState(false);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [validLength, setValidLength] = useState(false);
@@ -17,14 +16,14 @@ function Register() {
     const [phoneNumber, setPhoneNumber] = useState('');
     const [phoneError, setPhoneError] = useState(false);
     const [serverError, setServerError] = useState('');
-    const [showErrorPopup, setShowErrorPopup] = useState(false); // State for the error popup
-    const [errorMessage, setErrorMessage] = useState(''); // State for the error message
+    const [showErrorPopup, setShowErrorPopup] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
 
     const handleChange = (e) => {
         const val = e.target.value;
         setPassword(val);
 
-        setValidLength(val.length >= 8);
+        setValidLength(val.length >= 15);
         setHasUpper(/[A-Z]/.test(val));
         setHasLower(/[a-z]/.test(val));
         setHasNumber(/[0-9]/.test(val));
@@ -76,7 +75,7 @@ function Register() {
                 className="absolute top-2 w-1/5"
                 style={{ right: '3rem' }}
             />
-            <div className="p-8 rounded-tr-lg shadow-md w-96" style={{ right: '3rem' }}>
+            <div className="p-4 rounded-lg w-1/5 bg-black bg-opacity-50 shadow-white shadow-xl" style={{ right: '3rem' }}>
                 <div className="mb-2">
                     <input
                         type="text"
@@ -94,12 +93,20 @@ function Register() {
                         value={password}
                         onChange={handleChange}
                     />
+                    {/* Display password rules */}
+                    <div className="mt-2">
+                        <div className={validLength ? 'text-green-500' : 'text-red-500'}>At least 15 characters</div>
+                        <div className={hasUpper ? 'text-green-500' : 'text-red-500'}>At least one uppercase letter</div>
+                        <div className={hasLower ? 'text-green-500' : 'text-red-500'}>At least one lowercase letter</div>
+                        <div className={hasNumber ? 'text-green-500' : 'text-red-500'}>At least one number</div>
+                        <div className={hasSpecial ? 'text-green-500' : 'text-red-500'}>At least one special character</div>
+                    </div>
                 </div>
                 <div className="mb-2">
                     <input
                         type="password"
                         placeholder="Confirm Password"
-                        className="w-full p-3 rounded-lg border border-blue-300 text-black"
+                        className="font-roboto-slab font-bold w-full p-3 rounded-lg border border-blue-300 text-black"
                         value={confirmPassword}
                         onChange={(e) => setConfirmPassword(e.target.value)}
                     />
@@ -115,18 +122,18 @@ function Register() {
                     />
                     {phoneError && <div className="text-red-500">Invalid phone number</div>}
                 </div>
-                <div className="mb-2">
+                <div className="my-2 ">
                     <button
-                        className="text-white p-2 rounded-lg w-full custom-bg"
+                        className="text-white p-2 rounded-lg w-full bg-blue-600"
                         onClick={handleRegister}
                     >
                         Register
                     </button>
                     {serverError && <div className="text-red-500">{serverError}</div>}
                 </div>
-                <div className="border-b border-gray-300 my-2"></div>
+                <div className="border-b border-gray-300 my-4"></div>
                 <div className="text-center mt-4">
-                    <button className="bg-white text-black p-2 rounded text-xl w-40"
+                    <button className="bg-white text-black p-1 rounded text-xl w-40"
                             onClick={() => navigate('/login')}
                     >
                         Login Instead
@@ -142,14 +149,14 @@ function Register() {
                     </div>
                 </div>
             )}
-            <div className="mb-2 text-center">
-                <button
-                    className="position-center text-black p-1 rounded-full w-56 bg-white"
-                    onClick={() => navigate('/register/admin')}
-                >
-                    Admin Registration
-                </button>
-            </div>
+            {/*<div className="mb-2 text-center">*/}
+            {/*    <button*/}
+            {/*        className="position-center text-black p-1 rounded-full w-56 bg-white"*/}
+            {/*        onClick={() => navigate('/register/admin')}*/}
+            {/*    >*/}
+            {/*        Admin Registration*/}
+            {/*    </button>*/}
+            {/*</div>*/}
         </div>
 
     );

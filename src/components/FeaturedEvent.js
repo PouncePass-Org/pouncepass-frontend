@@ -17,7 +17,7 @@ const FeaturedEvent = () => {
                 <p className="text-lg pt-1">Where? TD Arena</p>
             </div>
             <div className="mt-4 self-end">
-                <button className="bg-blue-400 text-white px-4 py-2 rounded-lg" onClick={() => navigate('/event')}>
+                <button className="bg-blue-600 text-white px-4 py-2 rounded-lg" onClick={() => navigate('/event')}>
                     Go to Event
                 </button>
             </div>
