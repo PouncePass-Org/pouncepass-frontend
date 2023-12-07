@@ -72,9 +72,9 @@ function Login() {
                         onChange={(e) => setPassword(e.target.value)}
                     />
                 </div>
-                <div className="mb-2">
+                <div className="py-2 flex justify-center">
                     <button
-                        className="text-white p-2 rounded-full w-full"
+                        className="text-white text-lg p-2 rounded-full w-1/3 align-middle"
                         style={{ backgroundColor: '#373a3a' }}
                         onClick={handleSignIn}  // Updated this line
                     >
@@ -89,7 +89,7 @@ function Login() {
                         </div>
                     )}
                 </div>
-                <div className="border-b border-gray-300 my-4"></div>
+                <div className="border-b border-gray-300 mb-4 mt-2"></div>
                 <div className="mb-2 text-center">
                     <button className="text-black p-1 rounded-full w-56 bg-white" onClick={() => setShowModal(true)}>
                         Forgot Email/Password?
@@ -103,14 +103,14 @@ function Login() {
                         Register Here
                     </button>
                 </div>
-                <div className="mb-2 text-center">
-                    <button
-                        className="position-center text-black p-1 rounded-full w-56 bg-white"
-                        onClick={() => navigate('/login/admin')}
-                    >
-                        Admin Login
-                    </button>
-                </div>
+                {/*<div className="mb-2 text-center">*/}
+                {/*    <button*/}
+                {/*        className="position-center text-black p-1 rounded-full w-56 bg-white"*/}
+                {/*        onClick={() => navigate('/login/admin')}*/}
+                {/*    >*/}
+                {/*        Admin Login*/}
+                {/*    </button>*/}
+                {/*</div>*/}
             </div>
 
             {showModal && (
