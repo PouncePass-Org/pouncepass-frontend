@@ -52,7 +52,7 @@ const Header = () => {
     };
 
     return (
-        <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-in-out ${scrolling ? 'bg-white text-black' : 'bg-black text-white'}`}>
+        <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-in-out ${scrolling ? 'bg-white text-black hover:bg-gray-600 hover:text-white' : 'bg-black text-white hover:bg-gray-600 hover:text-white'}`}>
             <div className="container mx-auto p-4 flex justify-between items-center">
                 {/* Left side */}
                 <div className="flex space-x-4">

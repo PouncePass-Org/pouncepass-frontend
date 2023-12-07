@@ -2,10 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
-/*body{*/
-/*  background-color: darkgreen;*/
-/*  color:#fff;*/
-/*}*/
+/* index.css or app.css */
+
+/* Import the font file */
+@font-face {
+    font-family: 'Sans Mono';
+    /* Add other formats here if you have them, e.g., woff, ttf */
+}
+
+/* Apply the font globally to the body or specific elements */
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
 
 input:focus,
 button:focus {

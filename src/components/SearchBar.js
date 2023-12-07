@@ -18,12 +18,12 @@ const SearchBar = () => {
     };
 
     return (
-        <div className="flex justify-center mt-16">
-            <form onSubmit={handleSearch} className="flex justify-center mt-161 w-full">
+        <div className="flex justify-center">
+            <form onSubmit={handleSearch} className="flex justify-center pt-20 w-full">
                 <input
                     type="text"
                     placeholder="Search for events, artists, sports..."
-                    className="w-2/4 p-2 rounded-lg text-center text-black"
+                    className="w-1/3 p-3 rounded-lg text-center text-lg text-black"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                 />
