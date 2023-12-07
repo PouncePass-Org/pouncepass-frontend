@@ -46,16 +46,21 @@ const Header = () => {
         navigate('/');
     };
 
+    const handleCategoryClick = (category) => {
+        navigate(`/search-results?q=${encodeURIComponent(category)}`);
+
+    };
+
     return (
-        <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-in-out ${scrolling ? 'bg-white text-black' : 'bg-black text-white'}`}>
+        <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ease-in-out ${scrolling ? 'bg-white text-black hover:bg-gray-600 hover:text-white' : 'bg-black text-white hover:bg-gray-600 hover:text-white'}`}>
             <div className="container mx-auto p-4 flex justify-between items-center">
                 {/* Left side */}
                 <div className="flex space-x-4">
                     <button className="font-bold" onClick={() => navigate('/')}>PouncePass</button>
-                    <button>Concerts</button>
-                    <button>Sports</button>
-                    <button>Art & Theatre</button>
-                    <button>More</button>
+                    <button onClick={() => handleCategoryClick('Concerts')}>Concerts</button>
+                    <button onClick={() => handleCategoryClick('Sports')}>Sports</button>
+                    <button onClick={() => handleCategoryClick('Art')}>Art & Theatre</button>
+                    <button onClick={() => handleCategoryClick('More')}>More</button>
                 </div>
                 {/* Right side */}
                 <div className="flex space-x-4">
