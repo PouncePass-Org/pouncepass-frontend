@@ -57,7 +57,7 @@ function Login() {
                     <input
                         type="text"
                         placeholder="Email"
-                        className="w-full p-3 rounded-full border border-blue-300 text-black"
+                        className="w-full p-3 rounded-lg border border-blue-300 text-black"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                     />
@@ -66,7 +66,7 @@ function Login() {
                     <input
                         type="password"
                         placeholder="Password"
-                        className="w-full p-3 rounded-full border border-blue-300 text-black"
+                        className="w-full p-3 rounded-lg border border-blue-300 text-black"
 
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
@@ -74,8 +74,7 @@ function Login() {
                 </div>
                 <div className="py-2 flex justify-center">
                     <button
-                        className="text-white text-lg p-2 rounded-full w-1/3 align-middle"
-                        style={{ backgroundColor: '#373a3a' }}
+                        className="text-white bg-blue-600 text-lg p-2 rounded-lg w-1/3 align-middle"
                         onClick={handleSignIn}  // Updated this line
                     >
                         Sign In
@@ -89,15 +88,15 @@ function Login() {
                         </div>
                     )}
                 </div>
-                <div className="border-b border-gray-300 mb-4 mt-2"></div>
+                <div className="border-2 rounded-lg border-gray-300 mb-4 mt-2"></div>
                 <div className="mb-2 text-center">
-                    <button className="text-black p-1 rounded-full w-56 bg-white" onClick={() => setShowModal(true)}>
+                    <button className="text-black p-1 rounded-lg w-56 bg-white" onClick={() => setShowModal(true)}>
                         Forgot Email/Password?
                     </button>
                 </div>
                 <div className="mb-2 text-center">
                     <button
-                        className="position-center text-black p-1 rounded-full w-56 bg-white"
+                        className="position-center text-black p-1 rounded-lg w-56 bg-white"
                         onClick={() => navigate('/register')}
                     >
                         Register Here
