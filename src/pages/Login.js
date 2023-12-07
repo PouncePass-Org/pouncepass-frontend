@@ -52,7 +52,7 @@ function Login() {
                 className="absolute top-12 w-1/5"
                 style={{ left: '3rem' }}
             />
-            <div className="p-8 rounded-lg shadow-md w-96">
+            <div className="p-8 w-1/4 rounded-lg bg-black bg-opacity-50 shadow-white shadow-xl">
                 <div className="mb-2">
                     <input
                         type="text"
@@ -89,6 +89,7 @@ function Login() {
                         </div>
                     )}
                 </div>
+                <div className="border-b border-gray-300 my-4"></div>
                 <div className="mb-2 text-center">
                     <button className="text-black p-1 rounded-full w-56 bg-white" onClick={() => setShowModal(true)}>
                         Forgot Email/Password?
@@ -110,7 +111,6 @@ function Login() {
                         Admin Login
                     </button>
                 </div>
-                <div className="border-b border-gray-300 my-2"></div>
             </div>
 
             {showModal && (
